@@ -9,9 +9,14 @@ export default function FilterableProductTable() {
 
     return (
         <div className={styles.container}>
-            <SearchBar />
-            <hr />
-            <ProductTable />
+            <SearchBar 
+              filterText={filterText}
+              setFilterText={setFilterText}
+              inStockOnly={inStockOnly} 
+              toggleStock={() => setInStockOnly(!inStockOnly) }
+            />
+            <hr/>
+            <ProductTable filterText={filterText} inStockOnly={inStockOnly} />
         </div>
     )
 }
