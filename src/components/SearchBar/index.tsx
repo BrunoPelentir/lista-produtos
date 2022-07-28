@@ -1,11 +1,27 @@
 import styles from "./SearchBar.module.css";
 
-export default function SearchBar() {
+type Props = {
+    inStockOnly: boolean;
+    filterText: string;
+};
+
+export default function SearchBar(props: Props) {
+    
+
     return (
         <form className={styles.form}>
-            <input type="text" placeholder="Search..." />
+            {/* Componente controlado */}
+            <input 
+                type="text" 
+                placeholder="Search..." 
+                onChange={e => setFilterText(e.target.value)} 
+                value={filterText} 
+            />
             <label>
-                <input type="checkbox" /> Only show products in stock
+                <input 
+                    type="checkbox" 
+                    onChange={() => setInStockOnly(!inStockOnly)} 
+                    checked={inStockOnly} /> Only show products in stock
             </label>
         </form>
     );
